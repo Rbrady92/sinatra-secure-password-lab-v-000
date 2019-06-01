@@ -20,9 +20,9 @@ class ApplicationController < Sinatra::Base
     #your code here
     user = User.new(username: params[:username], password: params[:password])
 
-    if user.save 
+    if user.save
       redirect "/login"
-    else 
+    else
       redirect "/failure"
   end
 
@@ -41,10 +41,10 @@ class ApplicationController < Sinatra::Base
     @user = user.find_by(username: params[:username])
 
     if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id 
+      session[:user_id] = @user.id
       redirect "/account"
     else redirect "/failure"
-    end 
+    end
   end
 
   get "/failure" do
